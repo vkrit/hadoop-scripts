@@ -21,12 +21,12 @@ sudo sh -c 'cat /home/hduser/.ssh/id_rsa.pub >> /home/hduser/.ssh/authorized_key
 
 # Download Hadoop and set permissons
 cd ~
-if [ ! -f hadoop-2.2.0.tar.gz ]; then
-	wget http://apache.osuosl.org/hadoop/common/hadoop-2.2.0/hadoop-2.2.0.tar.gz
+if [ ! -f hadoop-2.3.0.tar.gz ]; then
+	wget http://apache.osuosl.org/hadoop/common/hadoop-2.3.0/hadoop-2.3.0.tar.gz
 fi
-sudo tar vxzf hadoop-2.2.0.tar.gz -C /usr/local
+sudo tar vxzf hadoop-2.3.0.tar.gz -C /usr/local
 cd /usr/local
-sudo mv hadoop-2.2.0 hadoop
+sudo mv hadoop-2.3.0 hadoop
 sudo chown -R hduser:hadoop hadoop
 
 # Hadoop variables
