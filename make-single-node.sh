@@ -72,7 +72,7 @@ echo "jsp"
 
 echo "== Then test hadoop by =="
 echo "cd /usr/local/hadoop"
-echo "hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.2.0.jar pi 2 5"
+echo "hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.3.0.jar pi 2 5"
 
 # Format Namenode
 #sudo sh -c 'hdfs namenode -format'
