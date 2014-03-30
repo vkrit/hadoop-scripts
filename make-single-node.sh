@@ -62,10 +62,18 @@ sudo -u hduser sed -i.bak 's=<configuration>=<configuration>\<property>\<name>df
 echo "Please do the following"
 echo "Logon as hduser then"
 echo "cd ~"
-echo "sudo mkdir -p mydata/hdfs/namenode"
-echo "sudo mkdir -p mydata/hdfs/datanode"
+echo "mkdir -p mydata/hdfs/namenode"
+echo "mkdir -p mydata/hdfs/datanode"
 
 echo "hdfs namenode -format"
+echo "start-dfs.sh"
+echo "start-yarn.sh"
+echo "jsp"
+
+echo "== Then test hadoop by =="
+echo "cd /usr/local/hadoop"
+echo "hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.2.0.jar pi 2 5"
+
 # Format Namenode
 #sudo sh -c 'hdfs namenode -format'
 
