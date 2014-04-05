@@ -4,7 +4,7 @@ sudo apt-get update
 # Download java jdk
 sudo apt-get install openjdk-7-jdk
 cd /usr/lib/jvm
-sudo ln -s java-7-openjdk-amd64 jdk
+sudo ln -s java-7-openjdk-i386 jdk
 
 # Uncommment to install ssh 
 sudo apt-get install openssh-server
@@ -22,7 +22,7 @@ sudo sh -c 'cat /home/hduser/.ssh/id_rsa.pub >> /home/hduser/.ssh/authorized_key
 # Download Hadoop and set permissons
 cd ~
 if [ ! -f hadoop-2.3.0.tar.gz ]; then
-	wget http://apache.osuosl.org/hadoop/common/hadoop-2.3.0/hadoop-2.3.0.tar.gz
+	wget http://mirror.cc.columbia.edu/pub/software/apache/hadoop/common/hadoop-2.3.0/hadoop-2.3.0.tar.gz
 fi
 sudo tar vxzf hadoop-2.3.0.tar.gz -C /usr/local
 cd /usr/local
@@ -56,13 +56,23 @@ sudo -u hduser sed -i.bak 's=<configuration>=<configuration>\<property>\<name>ya
 sudo -u hduser cp mapred-site.xml.template mapred-site.xml
 sudo -u hduser sed -i.bak 's=<configuration>=<configuration>\<property>\<name>mapreduce\.framework\.name</name>\<value>yarn</value>\</property>=g' mapred-site.xml
  
-cd ~
-sudo mkdir -p mydata/hdfs/namenode
-sudo mkdir -p mydata/hdfs/datanode
-
 cd /usr/local/hadoop/etc/hadoop
 sudo -u hduser sed -i.bak 's=<configuration>=<configuration>\<property>\<name>dfs\.replication</name>\<value>1\</value>\</property>\<property>\<name>dfs\.namenode\.name\.dir</name>\<value>file:/home/hduser/mydata/hdfs/namenode</value>\</property>\<property>\<name>dfs\.datanode\.data\.dir</name>\<value>file:/home/hduser/mydata/hdfs/datanode</value>\</property>=g' hdfs-site.xml
 
+echo "Please do the following"
+echo "Logon as hduser then"
+echo "cd ~"
+echo "mkdir -p mydata/hdfs/namenode"
+echo "mkdir -p mydata/hdfs/datanode"
+
+echo "hdfs namenode -format"
+echo "start-dfs.sh"
+echo "start-yarn.sh"
+echo "jsp"
+
+echo "== Then test hadoop by =="
+echo "cd /usr/local/hadoop"
+echo "hadoop jar ./share/hadoop/mapreduce/hadoop-mapreduce-examples-2.3.0.jar pi 2 5"
 
 # Format Namenode
 #sudo sh -c 'hdfs namenode -format'
